@@ -21,7 +21,10 @@
       "launchBrowser": false,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/api",
       "publishAllPorts": true,
-      "useSSL": false
+      "useSSL": false,
+      "environmentVariables": {
+         "ASPNETCORE_ENVIRONMENT": "Development"
+      }
     }
   },
   "iisSettings": {

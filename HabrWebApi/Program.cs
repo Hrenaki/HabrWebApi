@@ -7,6 +7,7 @@ builder.Services.AddRouting();
 builder.Services.AddControllers();
 
 builder.Services.AddScoped<IAuthorService, AuthorService>();
+builder.Services.AddScoped<IEnvironmentInfoService, EnvironmentInfoService>();
 
 var app = builder.Build();
 app.UseRouting();

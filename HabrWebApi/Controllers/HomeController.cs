@@ -10,12 +10,15 @@ namespace HabrWebApi.Controllers
       private const string onlineMessage = "online";
 
       private readonly IAuthorService authorService;
+      private readonly IEnvironmentInfoService environmentInfoService;
 
-      public HomeController(IAuthorService authorService)
+      public HomeController(IAuthorService authorService, IEnvironmentInfoService infoService)
       {
          ArgumentNullException.ThrowIfNull(authorService, nameof(authorService));
+         ArgumentNullException.ThrowIfNull(infoService, nameof(infoService));
 
          this.authorService = authorService;
+         environmentInfoService = infoService;
       }
 
       [HttpGet]
@@ -28,6 +31,12 @@ namespace HabrWebApi.Controllers
       public string GetAuthors()
       {
          return JsonConvert.SerializeObject(new { result = authorService.GetAuthors() });
+      }
+
+      [HttpGet("info")]
+      public string GetInfo()
+      {
+         return JsonConvert.SerializeObject(environmentInfoService.GetInfo());
       }
    }
 }
